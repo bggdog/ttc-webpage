@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/ttc_landing_v7.html", "destination": "/" }
+  ]
+}
