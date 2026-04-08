@@ -1,0 +1,270 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  .ttc {
+    --ttc-x: clamp(24px, 5vw, 72px);
+    --ttc-content-max: 960px;
+    --ttc-section-y: 80px;
+    --ttc-hero-top: 96px;
+    --ttc-hero-bottom: 88px;
+    --ttc-border: #ebebeb;
+    background: #fff;
+    color: #111;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 300;
+    line-height: 1.65;
+  }
+  .ttc-nav { padding: 22px var(--ttc-x); border-bottom: 1px solid var(--ttc-border); display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 14px 32px; text-align: center; }
+  .ttc-logo { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 18px; letter-spacing: -0.01em; color: #111; }
+  .ttc-logo span { font-weight: 300; }
+  .ttc-nav-meta { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #aaa; display: flex; gap: 20px; flex-shrink: 0; justify-content: center; flex-wrap: wrap; }
+  .ttc-hero { padding: var(--ttc-hero-top) var(--ttc-x) var(--ttc-hero-bottom); border-bottom: 1px solid var(--ttc-border); }
+  .ttc-hero-inner { max-width: var(--ttc-content-max); margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center; }
+  .ttc-eyebrow { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #bbb; margin-bottom: 28px; }
+  .ttc-h1 { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: clamp(44px, 6.5vw, 76px); line-height: 1.03; letter-spacing: -0.03em; color: #111; margin-bottom: 10px; }
+  .ttc-h1-light { font-weight: 300; color: #999; display: block; margin-top: 4px; }
+  .ttc-logline { font-size: 16px; color: #777; max-width: 34em; margin-top: 32px; line-height: 1.68; font-weight: 300; }
+  .ttc-meta-row { padding: 24px var(--ttc-x); border-bottom: 1px solid var(--ttc-border); }
+  .ttc-meta-inner { max-width: var(--ttc-content-max); margin: 0 auto; display: flex; gap: 28px 40px; flex-wrap: wrap; align-items: flex-start; justify-content: center; }
+  .ttc-meta-item { padding: 0; min-width: 0; text-align: center; max-width: 200px; }
+  .ttc-meta-label { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: #bbb; margin-bottom: 6px; }
+  .ttc-meta-val { font-size: 13px; color: #333; font-weight: 400; line-height: 1.45; }
+  .ttc-live-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #111; margin-right: 6px; vertical-align: middle; }
+  .ttc-section { padding: var(--ttc-section-y) var(--ttc-x); border-bottom: 1px solid var(--ttc-border); display: flex; flex-direction: column; align-items: center; text-align: center; }
+  .ttc-section-label { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #ccc; margin-bottom: 36px; }
+  .ttc-about-pull { font-size: clamp(19px, 2.6vw, 26px); font-weight: 400; color: #222; max-width: 36em; line-height: 1.48; margin-bottom: 24px; letter-spacing: -0.01em; }
+  .ttc-about-body { font-size: 15px; color: #888; max-width: 38em; font-weight: 300; line-height: 1.75; }
+  .ttc-ticker-section { border-top: 1px solid var(--ttc-border); border-bottom: 1px solid var(--ttc-border); padding: 0; overflow: hidden; position: relative; }
+  .ttc-ticker-fade-l { position: absolute; left: 0; top: 0; bottom: 0; width: 80px; background: linear-gradient(to right, #fff, transparent); z-index: 2; pointer-events: none; }
+  .ttc-ticker-fade-r { position: absolute; right: 0; top: 0; bottom: 0; width: 80px; background: linear-gradient(to left, #fff, transparent); z-index: 2; pointer-events: none; }
+  .ttc-ticker-track { display: flex; align-items: center; white-space: nowrap; animation: ticker-scroll 40s linear infinite; will-change: transform; }
+  .ttc-ticker-track:hover { animation-play-state: paused; }
+  @keyframes ticker-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+  .ttc-ticker-item { display: inline-flex; align-items: center; padding: 22px 0; flex-shrink: 0; }
+  .ttc-ticker-quote { font-size: 13px; color: #444; font-weight: 400; letter-spacing: -0.01em; padding: 0 14px; }
+  .ttc-ticker-attr { font-size: 10px; color: #bbb; letter-spacing: 0.12em; text-transform: uppercase; padding: 0 10px; flex-shrink: 0; }
+  .ttc-ticker-dot { display: inline-block; width: 3px; height: 3px; border-radius: 50%; background: #ddd; flex-shrink: 0; margin: 0 28px; }
+  .ttc-trailer-section { padding: var(--ttc-section-y) var(--ttc-x); border-bottom: 1px solid var(--ttc-border); background: #fafafa; display: flex; justify-content: center; }
+  .ttc-trailer-inner { width: 100%; max-width: var(--ttc-content-max); margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 28px; text-align: center; }
+  .ttc-trailer-inner .ttc-section-label { margin-bottom: 0; }
+  .ttc-video-wrap { position: relative; width: 100%; padding-bottom: 56.25%; border-radius: 12px; overflow: hidden; background: #111; box-shadow: 0 4px 24px rgba(0,0,0,0.06); }
+  .ttc-video-wrap iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+  .ttc-comp-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 20px; width: 100%; max-width: var(--ttc-content-max); }
+  .ttc-comp-card { border: 1px solid var(--ttc-border); border-radius: 10px; padding: 28px 28px 30px; text-align: center; }
+  .ttc-comp-if { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: #ccc; margin-bottom: 12px; }
+  .ttc-comp-show { font-size: 17px; font-weight: 600; color: #111; letter-spacing: -0.01em; margin-bottom: 10px; }
+  .ttc-comp-desc { font-size: 13px; color: #999; line-height: 1.6; font-weight: 300; }
+  .ttc-ep-card { border: 1px solid var(--ttc-border); border-radius: 12px; padding: 40px 44px 44px; width: 100%; max-width: var(--ttc-content-max); text-align: center; }
+  .ttc-ep-num { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: #ccc; margin-bottom: 10px; }
+  .ttc-ep-title { font-size: clamp(24px, 3.5vw, 30px); font-weight: 700; letter-spacing: -0.02em; color: #111; margin-bottom: 18px; }
+  .ttc-ep-desc { font-size: 15px; color: #888; line-height: 1.75; max-width: 40em; margin-left: auto; margin-right: auto; margin-bottom: 36px; font-weight: 300; }
+  .ttc-sl-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px; text-align: center; }
+  .ttc-sl { background: #f8f8f8; border-radius: 8px; padding: 22px 24px 24px; }
+  .ttc-sl-tag { font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: #bbb; margin-bottom: 8px; }
+  .ttc-sl-title { font-size: 13px; font-weight: 500; color: #222; margin-bottom: 6px; }
+  .ttc-sl-desc { font-size: 12px; color: #999; line-height: 1.6; font-weight: 300; }
+  .ttc-carousel-wrap { position: relative; overflow: hidden; width: 100%; max-width: var(--ttc-content-max); margin: 0 auto; padding: 0; }
+  .ttc-carousel-track { display: flex; gap: 20px; transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94); padding: 6px 0 8px; justify-content: flex-start; }
+  .ttc-cast-card { flex: 0 0 200px; border: 1px solid var(--ttc-border); border-radius: 10px; overflow: hidden; background: #fff; }
+  .ttc-cast-photo { width: 100%; height: 220px; background: #f2f2f2; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid var(--ttc-border); position: relative; }
+  .ttc-cast-initials { font-size: 32px; font-weight: 700; color: #ccc; letter-spacing: -0.02em; }
+  .ttc-photo-label { position: absolute; bottom: 10px; right: 10px; background: rgba(255,255,255,0.9); border: 1px solid var(--ttc-border); border-radius: 4px; font-size: 9px; padding: 3px 8px; color: #bbb; letter-spacing: 0.1em; text-transform: uppercase; }
+  .ttc-cast-info { padding: 16px 18px 18px; text-align: center; }
+  .ttc-cast-actor { font-size: 13px; font-weight: 500; color: #111; margin-bottom: 4px; }
+  .ttc-cast-role { font-size: 11px; color: #aaa; font-weight: 300; }
+  .ttc-cast-badge { display: inline-block; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; background: #f2f2f2; color: #aaa; border-radius: 20px; padding: 3px 9px; margin-top: 8px; }
+  .ttc-carousel-nav { display: flex; gap: 12px; margin-top: 28px; align-items: center; justify-content: center; flex-wrap: wrap; }
+  .ttc-carousel-btn { width: 36px; height: 36px; border: 1px solid #ddd; border-radius: 50%; background: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 14px; color: #555; transition: background 0.15s, border-color 0.15s; user-select: none; }
+  .ttc-carousel-btn:hover { background: #f5f5f5; border-color: #bbb; }
+  .ttc-carousel-btn:disabled { opacity: 0.3; cursor: default; }
+  .ttc-carousel-count { font-size: 11px; color: #ccc; align-self: center; margin-left: 4px; letter-spacing: 0.08em; }
+  .ttc-footer { padding: 36px var(--ttc-x) 40px; border-top: 1px solid var(--ttc-border); display: flex; align-items: center; justify-content: center; flex-direction: column; flex-wrap: wrap; gap: 18px; text-align: center; width: 100%; }
+  .ttc-footer-left { font-size: 11px; color: #ccc; letter-spacing: 0.05em; line-height: 1.5; }
+  .ttc-footer-tags { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+  .ttc-genre-tag { font-size: 10px; padding: 5px 14px; border: 1px solid var(--ttc-border); border-radius: 20px; color: #bbb; }
+  @media (max-width: 640px) {
+    .ttc { --ttc-section-y: 64px; --ttc-hero-top: 72px; --ttc-hero-bottom: 64px; }
+    .ttc-sl-grid, .ttc-comp-grid { grid-template-columns: 1fr; }
+    .ttc-h1 { font-size: 42px; }
+    .ttc-nav-meta { display: none; }
+  }
+</style>
+
+<div class="ttc">
+
+  <nav class="ttc-nav">
+    <div class="ttc-logo">The Therapy <span>Company</span></div>
+    <div class="ttc-nav-meta">
+      <span>Mockumentary</span>
+      <span>·</span>
+      <span>Comedy Series</span>
+      <span>·</span>
+      <span>Season 1</span>
+    </div>
+  </nav>
+
+  <div class="ttc-hero">
+    <div class="ttc-hero-inner">
+      <div class="ttc-eyebrow">Season 1 &nbsp;·&nbsp; In Production &nbsp;·&nbsp; 2026</div>
+      <h1 class="ttc-h1">The Therapy<br><span class="ttc-h1-light">Company</span></h1>
+      <p class="ttc-logline">A mockumentary comedy following the barely-credentialed staff of a behavioral health startup that is, against all evidence, still in business.</p>
+    </div>
+  </div>
+
+  <div class="ttc-meta-row">
+    <div class="ttc-meta-inner">
+      <div class="ttc-meta-item"><div class="ttc-meta-label">Format</div><div class="ttc-meta-val">Mockumentary</div></div>
+      <div class="ttc-meta-item"><div class="ttc-meta-label">Status</div><div class="ttc-meta-val"><span class="ttc-live-dot"></span>Active production</div></div>
+      <div class="ttc-meta-item"><div class="ttc-meta-label">Genre</div><div class="ttc-meta-val">Comedy · Workplace</div></div>
+      <div class="ttc-meta-item"><div class="ttc-meta-label">Episodes</div><div class="ttc-meta-val">Season 1 in development</div></div>
+    </div>
+  </div>
+
+  <div class="ttc-section">
+    <div class="ttc-section-label">About the series</div>
+    <p class="ttc-about-pull">"Everyone here is doing their best. That's the most alarming part."</p>
+    <p class="ttc-about-body">Shot in the tradition of the great workplace mockumentaries, The Therapy Company follows a rotating cast of well-meaning professionals whose personal dysfunction is only slightly more pronounced than the organizational chaos around them. The camera never blinks. Neither do they.</p>
+  </div>
+
+  <div class="ttc-ticker-section">
+    <div class="ttc-ticker-fade-l"></div>
+    <div class="ttc-ticker-fade-r"></div>
+    <div class="ttc-ticker-track" id="tickerTrack"></div>
+  </div>
+
+  <div class="ttc-trailer-section">
+    <div class="ttc-trailer-inner">
+      <div class="ttc-section-label">Sneak peek</div>
+      <div class="ttc-video-wrap">
+        <iframe src="https://www.youtube.com/embed/Pli3tgfAQH8?rel=0&modestbranding=1" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div class="ttc-section">
+    <div class="ttc-section-label">If you like</div>
+    <div class="ttc-comp-grid">
+      <div class="ttc-comp-card">
+        <div class="ttc-comp-if">If you liked</div>
+        <div class="ttc-comp-show">The Office</div>
+        <div class="ttc-comp-desc">The deadpan confessionals, the fluorescent lighting, the sense that HR is both the problem and the solution.</div>
+      </div>
+      <div class="ttc-comp-card">
+        <div class="ttc-comp-if">If you liked</div>
+        <div class="ttc-comp-show">Abbott Elementary</div>
+        <div class="ttc-comp-desc">Genuinely good people in a genuinely broken institution, trying anyway. The warmth is real. So is the chaos.</div>
+      </div>
+      <div class="ttc-comp-card">
+        <div class="ttc-comp-if">If you liked</div>
+        <div class="ttc-comp-show">St. Denis Medical</div>
+        <div class="ttc-comp-desc">The absurdity of a broken healthcare system, observed up close — with cameras, paperwork, and a staff doing their level best.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ttc-section">
+    <div class="ttc-section-label">Now in production</div>
+    <div class="ttc-ep-card">
+      <div class="ttc-ep-num">Episode 2</div>
+      <div class="ttc-ep-title">"The Audit"</div>
+      <p class="ttc-ep-desc">A state audit triggers a full-office meltdown. A first-time caregiver survives her inaugural patient visit — barely. And somewhere across town, a man is trying very hard to enjoy his golf day.</p>
+      <div class="ttc-sl-grid">
+        <div class="ttc-sl"><div class="ttc-sl-tag">Storyline A</div><div class="ttc-sl-title">The Office</div><div class="ttc-sl-desc">The state audit arrives. Compliance is a loose concept. Bobby is somehow in charge.</div></div>
+        <div class="ttc-sl"><div class="ttc-sl-tag">Storyline B</div><div class="ttc-sl-title">The First Visit</div><div class="ttc-sl-desc">Bunnie meets her first patient. The AAC device says hello. Things escalate from there.</div></div>
+        <div class="ttc-sl"><div class="ttc-sl-tag">Storyline C</div><div class="ttc-sl-title">The Golf Adventure</div><div class="ttc-sl-desc">Bobby attempts leisure. A song plays. The road has other plans.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ttc-section">
+    <div class="ttc-section-label">Cast</div>
+    <div class="ttc-carousel-wrap">
+      <div class="ttc-carousel-track" id="castTrack">
+        <div class="ttc-cast-card"><div class="ttc-cast-photo"><span class="ttc-cast-initials">R</span><span class="ttc-photo-label">Photo TBD</span></div><div class="ttc-cast-info"><div class="ttc-cast-actor">River</div><div class="ttc-cast-role">Bobby</div></div></div>
+        <div class="ttc-cast-card"><div class="ttc-cast-photo"><span class="ttc-cast-initials">J</span><span class="ttc-photo-label">Photo TBD</span></div><div class="ttc-cast-info"><div class="ttc-cast-actor">Jade</div><div class="ttc-cast-role">Series regular</div></div></div>
+        <div class="ttc-cast-card"><div class="ttc-cast-photo"><span class="ttc-cast-initials">D</span><span class="ttc-photo-label">Photo TBD</span></div><div class="ttc-cast-info"><div class="ttc-cast-actor">Dick</div><div class="ttc-cast-role">Series regular</div></div></div>
+        <div class="ttc-cast-card"><div class="ttc-cast-photo"><span class="ttc-cast-initials">K</span><span class="ttc-photo-label">Photo TBD</span></div><div class="ttc-cast-info"><div class="ttc-cast-actor">Katie</div><div class="ttc-cast-role">Series regular</div></div></div>
+        <div class="ttc-cast-card"><div class="ttc-cast-photo"><span class="ttc-cast-initials">M</span><span class="ttc-photo-label">Photo TBD</span></div><div class="ttc-cast-info"><div class="ttc-cast-actor">Matthew</div><div class="ttc-cast-role">Series regular</div></div></div>
+        <div class="ttc-cast-card"><div class="ttc-cast-photo"><span class="ttc-cast-initials">A</span><span class="ttc-photo-label">Photo TBD</span></div><div class="ttc-cast-info"><div class="ttc-cast-actor">Alexa</div><div class="ttc-cast-role">Series regular</div></div></div>
+        <div class="ttc-cast-card"><div class="ttc-cast-photo"><span class="ttc-cast-initials">S</span><span class="ttc-photo-label">Photo TBD</span></div><div class="ttc-cast-info"><div class="ttc-cast-actor">Sloane</div><div class="ttc-cast-role">Series regular</div><div class="ttc-cast-badge">Voice</div></div></div>
+        <div class="ttc-cast-card"><div class="ttc-cast-photo"><span class="ttc-cast-initials">A</span><span class="ttc-photo-label">Photo TBD</span></div><div class="ttc-cast-info"><div class="ttc-cast-actor">Audra</div><div class="ttc-cast-role">Series regular</div><div class="ttc-cast-badge">Voice</div></div></div>
+        <div class="ttc-cast-card"><div class="ttc-cast-photo"><span class="ttc-cast-initials">C</span><span class="ttc-photo-label">Photo TBD</span></div><div class="ttc-cast-info"><div class="ttc-cast-actor">Charlie</div><div class="ttc-cast-role">Supporting</div></div></div>
+        <div class="ttc-cast-card"><div class="ttc-cast-photo"><span class="ttc-cast-initials">M</span><span class="ttc-photo-label">Photo TBD</span></div><div class="ttc-cast-info"><div class="ttc-cast-actor">Margot</div><div class="ttc-cast-role">Supporting</div></div></div>
+        <div class="ttc-cast-card"><div class="ttc-cast-photo"><span class="ttc-cast-initials">T</span><span class="ttc-photo-label">Photo TBD</span></div><div class="ttc-cast-info"><div class="ttc-cast-actor">Teddy</div><div class="ttc-cast-role">Supporting</div></div></div>
+        <div class="ttc-cast-card"><div class="ttc-cast-photo"><span class="ttc-cast-initials">V</span><span class="ttc-photo-label">Photo TBD</span></div><div class="ttc-cast-info"><div class="ttc-cast-actor">Valentina</div><div class="ttc-cast-role">Supporting</div></div></div>
+        <div class="ttc-cast-card"><div class="ttc-cast-photo"><span class="ttc-cast-initials">H</span><span class="ttc-photo-label">Photo TBD</span></div><div class="ttc-cast-info"><div class="ttc-cast-actor">Helga</div><div class="ttc-cast-role">Supporting</div></div></div>
+        <div class="ttc-cast-card"><div class="ttc-cast-photo" style="background:#f8f8f8;"><span class="ttc-cast-initials" style="color:#ddd;">?</span><span class="ttc-photo-label">Casting</span></div><div class="ttc-cast-info"><div class="ttc-cast-actor">Sarah</div><div class="ttc-cast-role">Guest · Patient</div><div class="ttc-cast-badge">Casting</div></div></div>
+      </div>
+    </div>
+    <div class="ttc-carousel-nav">
+      <button class="ttc-carousel-btn" id="castPrev" onclick="slide(-1)">&#8592;</button>
+      <button class="ttc-carousel-btn" id="castNext" onclick="slide(1)">&#8594;</button>
+      <span class="ttc-carousel-count" id="castCount">1 – 4 of 14</span>
+    </div>
+  </div>
+
+  <div class="ttc-footer">
+    <div class="ttc-footer-left">The Therapy Company &nbsp;·&nbsp; Season 1 &nbsp;·&nbsp; © 2026</div>
+    <div class="ttc-footer-tags">
+      <span class="ttc-genre-tag">Comedy</span>
+      <span class="ttc-genre-tag">Mockumentary</span>
+      <span class="ttc-genre-tag">Workplace</span>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  var quotes = [
+    { text: "I have a master\u2019s degree. Two, actually. Neither of them are in anything relevant to this job.", attr: "Bobby \u00b7 Ep. 1" },
+    { text: "The audit is fine. We are completely prepared. Can someone find the binder?", attr: "Overheard \u00b7 Ep. 2" },
+    { text: "She didn\u2019t say anything the whole visit. But the way she looked at me \u2014 I think we really connected.", attr: "Bunnie \u00b7 Ep. 2" },
+    { text: "I just wanted to play nine holes. That\u2019s all I wanted. Nine holes.", attr: "Bobby \u00b7 Ep. 2" },
+    { text: "Technically we\u2019re still accredited. The letter said \u2018pending review\u2019 which is basically the same thing.", attr: "Overheard \u00b7 Ep. 1" },
+    { text: "I\u2019m not saying it\u2019s my fault. I\u2019m also not saying it\u2019s not my fault.", attr: "Overheard \u00b7 Ep. 2" },
+  ];
+
+  function buildTicker() {
+    var track = document.getElementById('tickerTrack');
+    var doubled = quotes.concat(quotes);
+    var html = '';
+    doubled.forEach(function(q) {
+      html += '<div class="ttc-ticker-item">';
+      html += '<span class="ttc-ticker-quote">\u201c' + q.text + '\u201d</span>';
+      html += '<span class="ttc-ticker-attr">' + q.attr + '</span>';
+      html += '<span class="ttc-ticker-dot"></span>';
+      html += '</div>';
+    });
+    track.innerHTML = html;
+  }
+
+  buildTicker();
+
+  var offset = 0;
+  var cardW = 220;
+  var visible = 4;
+  var total = 14;
+
+  function updateCarousel() {
+    var track = document.getElementById('castTrack');
+    var maxOffset = total - visible;
+    if (offset < 0) offset = 0;
+    if (offset > maxOffset) offset = maxOffset;
+    track.style.transform = 'translateX(-' + (offset * cardW) + 'px)';
+    document.getElementById('castPrev').disabled = offset === 0;
+    document.getElementById('castNext').disabled = offset >= maxOffset;
+    var end = Math.min(offset + visible, total);
+    document.getElementById('castCount').textContent = (offset + 1) + ' \u2013 ' + end + ' of ' + total;
+  }
+
+  function slide(dir) { offset += dir; updateCarousel(); }
+
+  function calcVisible() {
+    var wrap = document.querySelector('.ttc-carousel-wrap');
+    if (wrap) { visible = Math.max(1, Math.floor(wrap.offsetWidth / cardW)); updateCarousel(); }
+  }
+
+  setTimeout(function() { calcVisible(); updateCarousel(); }, 100);
+  window.addEventListener('resize', calcVisible);
+</script>
